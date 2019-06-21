@@ -1,2 +1,1 @@
-# flask-template
-flask项目模板
+# 基于flask的项目框架
