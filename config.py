@@ -12,7 +12,7 @@ base_dir = os.path.dirname(__file__)
 
 
 class Config(object):
-    # 秘钥
+    # 密钥
     HOST = os.environ.get('HOST')  # 公网域名
     DEBUG = True
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'something you never gusess....'
@@ -23,6 +23,11 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
                               'mysql+pymysql://root:root@localhost:3306/dbname?charset=utf8mb4'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    BROKER_URL = os.getenv('BROKER_URL',
+                           'redis://localhost:6379/0')
+    CELERY_ACKS_ON_FAILURE_OR_TIMEOUT = False
+    CELERY_ACKS_LATE = True
+
     # 分页设置
     PER_PAGE = 10
     # token 过期时间
